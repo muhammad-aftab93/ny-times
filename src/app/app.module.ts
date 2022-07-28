@@ -4,9 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import { SpinnerComponent } from './spinner/spinner.component';
-import {HttpClientModule} from "@angular/common/http";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {RouterModule} from "@angular/router";
+import {TokenInterceptor} from "./incterceptors/token.interceptor";
 
 @NgModule({
   declarations: [
@@ -18,9 +20,16 @@ import {HttpClientModule} from "@angular/common/http";
     AppRoutingModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

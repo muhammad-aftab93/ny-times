@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {SpinnerService} from "../../services/spinner.service";
-import {User} from "../../models/user";
-import {UsersManagementService} from "../../services/users-management.service";
+import {SpinnerService} from "../../../services/spinner.service";
+import {User} from "../../../models/user";
+import {UsersManagementService} from "../../../services/users-management.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -11,10 +12,12 @@ import {UsersManagementService} from "../../services/users-management.service";
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  errorMessage: String = '';
 
   constructor(private formBuilder: FormBuilder,
               private spinner: SpinnerService,
-              private usersService: UsersManagementService) {
+              private usersService: UsersManagementService,
+              private router: Router) {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -37,16 +40,17 @@ export class LoginComponent implements OnInit {
         .subscribe({
           next: (result) => {
             let token = result['access_token'];
-            alert(token);
+            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('token', JSON.stringify(token));
             this.spinner.hide();
+            this.router.navigate(['users-management']);
           },
           error: (e) => {
             this.spinner.hide();
-            alert(e['message']);
+            this.errorMessage = e.error['message'];
           },
           complete: () => {
             this.spinner.hide();
-            console.info('complete');
           }
         });
   }

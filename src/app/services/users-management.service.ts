@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {User} from "../models/user";
-import {Observable} from "rxjs";
+import {catchError, Observable, throwError} from "rxjs";
 import {USERS_API} from "../constants/api-urls";
 
 @Injectable({
@@ -17,5 +17,9 @@ export class UsersManagementService {
 
   registerUser(user: User): Observable<any> {
     return this._http.post(USERS_API + 'auth/register', user);
+  }
+
+  public getToken(): any {
+    return localStorage.getItem('token');
   }
 }
