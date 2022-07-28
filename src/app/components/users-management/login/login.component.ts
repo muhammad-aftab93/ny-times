@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
             let token = result['access_token'];
             localStorage.setItem('user', JSON.stringify(user));
             localStorage.setItem('token', JSON.stringify(token));
-            this.router.navigate(['users-management']);
+            this.router.navigate(['dashboard/layout/main']);
           },
           error: (e) => {
             this.errorMessage = e.error['message'];

@@ -6,19 +6,18 @@
       </mat-card-title>
       <mat-card-subtitle>{{story.section}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="{{story.multimedia[0].url}}" width="300px" height="300px" alt="Photo of a Shiba Inu">
+    <img mat-card-image src="{{story.multimedia ? story.multimedia[0].url : ''}}" width="300px" height="300px" alt="Photo of a Shiba Inu">
     <mat-card-content>
       <p>
         {{ story.abstract }}
       </p>
-      <p>
-        Created Date: {{ story.created_date | date: 'yyyy/MM/dd' }}
-        <br>
-        Updated Date: {{ story.updated_date | date: 'yyyy/MM/dd' }}
-        <br>
-        Published Date: {{ story.published_date | date: 'yyyy/MM/dd' }}
 
-      </p>
+      <div class="row">
+        <div class="col-3">Created Date: {{ story.created_date | date: 'yyyy/MM/dd' }}</div>
+        <div class="col-3">Updated Date: {{ story.updated_date | date: 'yyyy/MM/dd' }}</div>
+        <div class="col-3">Published Date: {{ story.published_date | date: 'yyyy/MM/dd' }}</div>
+      </div>
+
     </mat-card-content>
   </mat-card>
 </div>

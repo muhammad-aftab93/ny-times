@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-title class="text-center">NY Times</mat-card-title>
+  <mat-card-subtitle class="text-center">Filter by Category</mat-card-subtitle>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Category</mat-label>
+    <mat-select (selectionChange)="onCategoryChange($event)">
+      <mat-option *ngFor="let category of categories" [value]="category.value">
+        {{category.text}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="clearfix">
+  </div>
+</mat-card>

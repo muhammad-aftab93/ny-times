@@ -5,7 +5,7 @@
     </mat-card-title>
     <mat-card-subtitle>{{story.section}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="{{story.multimedia[0].url}}" height="204px" alt="Photo of a Shiba Inu">
+  <img mat-card-image src="{{story.multimedia ? story.multimedia[0].url : ''}}" height="204px" >
   <mat-card-content>
     <p>
       {{ (story.abstract.length > 110)? (story.abstract | slice:0:110)+'..':(story.abstract) }}
