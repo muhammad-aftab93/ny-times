@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
     }
 
     let user: User = { email: loginForm.value.email, password: loginForm.value.password };
-    this.spinner.show();
     this.usersService
       .loginUser(user)
         .subscribe({
@@ -42,15 +41,10 @@ export class LoginComponent implements OnInit {
             let token = result['access_token'];
             localStorage.setItem('user', JSON.stringify(user));
             localStorage.setItem('token', JSON.stringify(token));
-            this.spinner.hide();
             this.router.navigate(['users-management']);
           },
           error: (e) => {
-            this.spinner.hide();
             this.errorMessage = e.error['message'];
-          },
-          complete: () => {
-            this.spinner.hide();
           }
         });
   }

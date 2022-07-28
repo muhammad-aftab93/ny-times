@@ -14,6 +14,8 @@ import { FiltersComponent } from './main/filters/filters.component';
 import { CardsDetailsComponent } from './main/cards-details/cards-details.component';
 import { CardsComponent } from './main/cards/cards.component';
 import {HttpClientModule} from "@angular/common/http";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 
@@ -36,7 +38,9 @@ import {HttpClientModule} from "@angular/common/http";
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatPaginatorModule,
+    MatDialogModule
   ]
 })
 export class DashboardModule { }

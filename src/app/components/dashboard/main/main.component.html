@@ -24,11 +24,20 @@
 
   <div class="col-9">
     <div class="row">
-      <div class="col-4 mb-3">
-        <app-cards></app-cards>
-
-        {{stories | json}}
+      <div *ngFor="let story of dataSource" class="col-4 mb-3">
+        <app-cards [story]="story"></app-cards>
       </div>
     </div>
+
+    <mat-paginator #paginator
+                   [length]="length"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="[5, 10, 25, 100]"
+                   [pageIndex]="pageIndex"
+                   [showFirstLastButtons]="true"
+                   aria-label="Select page"
+                   (page)="getServerData($event)"
+                   >
+    </mat-paginator>
   </div>
 </div>

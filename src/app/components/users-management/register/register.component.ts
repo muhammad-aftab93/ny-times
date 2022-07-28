@@ -33,7 +33,6 @@ export class RegisterComponent implements OnInit {
     }
 
     let user: User = { email: registerForm.value.email, password: registerForm.value.password };
-    this.spinner.show();
     this.usersService
       .registerUser(user)
       .subscribe({
@@ -41,15 +40,10 @@ export class RegisterComponent implements OnInit {
           let token = result['access_token'];
           localStorage.setItem('user', JSON.stringify(user));
           localStorage.setItem('token', JSON.stringify(token));
-          this.spinner.hide();
           this.router.navigate(['users-management']);
         },
         error: (e) => {
-          this.spinner.hide();
           this.errorMessage = e.error['message'];
-        },
-        complete: () => {
-          this.spinner.hide();
         }
       });
   }
