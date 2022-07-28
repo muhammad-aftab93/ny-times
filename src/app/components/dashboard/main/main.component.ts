@@ -35,7 +35,7 @@ export class MainComponent implements OnInit {
         },
         error: (e) => {
           this.spinner.hide();
-          alert(e.error['message']);
+          console.log(e.error['message']);
         },
         complete: () => {
           this.spinner.hide();
