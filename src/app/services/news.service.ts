@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {NewsResponse} from "../models/news-response";
 import {HttpClient} from "@angular/common/http";
-import {TOP_STORIES} from "../constants/api-urls";
+import {SCIENCE_STORIES, TOP_STORIES, WORLD_STORIES} from "../constants/api-urls";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,19 @@ export class NewsService {
 
   constructor(private http: HttpClient) { }
 
-  getNewsByCategory(section: string) : Observable<NewsResponse> {
-    return this.http.get<NewsResponse>(TOP_STORIES);
+  getNewsByCategory(category: string) : Observable<NewsResponse> {
+    let apiUrl;
+    switch (category){
+      case "world":
+        apiUrl = WORLD_STORIES;
+        break;
+      case "science":
+        apiUrl = SCIENCE_STORIES;
+        break;
+      default:
+        apiUrl = TOP_STORIES;
+        break;
+    }
+    return this.http.get<NewsResponse>(apiUrl);
   }
 }

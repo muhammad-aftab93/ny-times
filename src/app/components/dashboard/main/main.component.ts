@@ -26,13 +26,8 @@ export class MainComponent implements OnInit {
     this.getTopStories('home');
   }
 
-  onLogout() {
-    localStorage.clear();
-    this.router.navigate(['/']);
-  }
-
-  private getTopStories(section: string) {
-    this.newsService.getNewsByCategory(section)
+  private getTopStories(category: string) {
+    this.newsService.getNewsByCategory(category)
       .subscribe({
         next: (result) => {
           this.length = result.num_results;
@@ -62,4 +57,7 @@ export class MainComponent implements OnInit {
     return event;
   }
 
+  onCategoryChange(value: any) {
+    this.getTopStories(value);
+  }
 }

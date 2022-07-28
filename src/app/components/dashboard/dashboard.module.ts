@@ -10,12 +10,18 @@ import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
-import { FiltersComponent } from './main/filters/filters.component';
+import { FiltersComponent } from './search/filters/filters.component';
 import { CardsDetailsComponent } from './main/cards-details/cards-details.component';
 import { CardsComponent } from './main/cards/cards.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatDialogModule} from "@angular/material/dialog";
+import { CategoryFilterComponent } from './main/category-filter/category-filter.component';
+import {MatSelectModule} from "@angular/material/select";
+import { SearchComponent } from './search/search.component';
+import { LayoutComponent } from './layout/layout.component';
+import { SearchCardsComponent } from './search/search-cards/search-cards.component';
+import { SearchCardsDetailsComponent } from './search/search-cards-details/search-cards-details.component';
 
 
 
@@ -24,7 +30,12 @@ import {MatDialogModule} from "@angular/material/dialog";
     MainComponent,
     FiltersComponent,
     CardsDetailsComponent,
-    CardsComponent
+    CardsComponent,
+    CategoryFilterComponent,
+    SearchComponent,
+    LayoutComponent,
+    SearchCardsComponent,
+    SearchCardsDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +51,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     ReactiveFormsModule,
     HttpClientModule,
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule
   ]
 })
 export class DashboardModule { }

@@ -1,17 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {MainComponent} from "./main/main.component";
+import { SearchComponent } from './search/search.component';
+import {LayoutComponent} from "./layout/layout.component";
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'main',
+    redirectTo: 'layout',
     pathMatch: 'full'
   },
   {
-    path: 'main',
-    component: MainComponent
-  }
+    path: 'layout',
+    component: LayoutComponent,
+    children: [
+      {
+        path: 'main',
+        component: MainComponent
+      },
+      {
+        path: 'search',
+        component: SearchComponent
+      }
+    ]
+  },
 ];
 
 @NgModule({

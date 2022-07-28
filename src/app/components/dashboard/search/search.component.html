@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-3">
-    <app-category-filter (categorySelectionChanged)="onCategoryChange($event)"></app-category-filter>
+    <app-filters></app-filters>
   </div>
 
   <div class="col-9">
     <div class="row">
-      <div *ngFor="let story of dataSource" class="col-4 mb-3">
-        <app-cards [story]="story"></app-cards>
+      <div *ngFor="let article of dataSource" class="col-4 mb-3">
+        <app-search-cards [article]="article"></app-search-cards>
       </div>
     </div>
 
@@ -17,8 +17,7 @@
                    [pageIndex]="pageIndex"
                    [showFirstLastButtons]="true"
                    aria-label="Select page"
-                   (page)="getServerData($event)"
-                   >
+                   (page)="getServerData($event)">
     </mat-paginator>
   </div>
 </div>

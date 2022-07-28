@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-12">
+    <mat-toolbar color="primary">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>NY Times</span>
+      <a style="width: 150px" routerLink="main" mat-raised-button color="primary" class="mx-3">
+        <mat-icon>home</mat-icon>
+        Home
+      </a>
+      <a style="width: 150px" routerLink="search" mat-raised-button color="primary" class="mx-3">
+        <mat-icon>search</mat-icon>
+        Search
+      </a>
+      <span class="example-spacer full-width"></span>
+      <div style="float: right">
+        <button (click)="onLogout()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+          <mat-icon>logout</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
+  </div>
+</div>
+
+<p></p>
+
+<router-outlet></router-outlet>

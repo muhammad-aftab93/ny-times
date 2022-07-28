@@ -1,0 +1,24 @@
+<div mat-dialog-content>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        {{ article.abstract }}
+      </mat-card-title>
+      <mat-card-subtitle>{{article.section_name}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://static01.nyt.com/{{article.multimedia ? article.multimedia[0].url : ''}}" width="300px" height="300px" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        {{ article.lead_paragraph }}
+      </p>
+
+      <div class="row">
+        <div class="col-3">Published Date: {{ article.pub_date | date: 'yyyy/MM/dd' }}</div>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+<div mat-dialog-actions class="justify-content-center">
+  <button mat-raised-button color="primary" (click)="closeDialog()">Close</button>
+</div>
