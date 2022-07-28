@@ -8,7 +8,8 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
-import {TokenInterceptor} from "./incterceptors/token.interceptor";
+import {TokenInterceptor} from "./interceptors/token.interceptor";
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,11 @@ import {TokenInterceptor} from "./incterceptors/token.interceptor";
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true,
     }
   ],
   bootstrap: [AppComponent]

@@ -1,1 +1,27 @@
-<p>cards-details works!</p>
+<div mat-dialog-content>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        {{ story.title }}
+      </mat-card-title>
+      <mat-card-subtitle>{{story.section}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{story.multimedia[0].url}}" width="300px" height="300px" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        {{ story.abstract }}
+      </p>
+      <p>
+        Created Date: {{ story.created_date | date: 'yyyy/MM/dd' }}
+        <br>
+        Updated Date: {{ story.updated_date | date: 'yyyy/MM/dd' }}
+        <br>
+        Published Date: {{ story.published_date | date: 'yyyy/MM/dd' }}
+
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div mat-dialog-actions class="justify-content-center">
+  <button mat-raised-button color="primary" (click)="closeDialog()">Close</button>
+</div>
