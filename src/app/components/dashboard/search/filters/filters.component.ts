@@ -64,6 +64,7 @@ export class FiltersComponent implements OnInit {
       q: '',
       sort: ''
     };
+
     this.filterForm.reset();
     this.onSearchSubmit.emit(searchFilters);
   }
