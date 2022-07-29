@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   errorMessage: String = '';
 
   constructor(private formBuilder: FormBuilder,
-              private spinner: SpinnerService,
               private usersService: UsersManagementService,
               private router: Router) {
     this.loginForm = this.formBuilder.group({

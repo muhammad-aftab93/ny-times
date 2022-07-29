@@ -1,14 +1,14 @@
 <mat-card class="example-card">
   <mat-card-header>
     <mat-card-title>
-      {{ (article.abstract.length > 40)? (article.abstract | slice:0:40)+'..':(article.abstract) }}
+      {{ (article.abstract?.length > 40)? (article.abstract | slice:0:40)+'..':(article.abstract) }}
     </mat-card-title>
     <mat-card-subtitle>{{article.section_name}}</mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image src="https://static01.nyt.com/{{article.multimedia ? article.multimedia[0]?.url : ''}}" height="204px">
   <mat-card-content>
     <p>
-      {{ (article.snippet.length > 110)? (article.snippet | slice:0:110)+'..':(article.snippet) }}
+      {{ (article.snippet?.length > 110)? (article.snippet | slice:0:110)+'..':(article.snippet) }}
     </p>
   </mat-card-content>
   <mat-card-actions>

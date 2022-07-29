@@ -25,8 +25,8 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     let filters: SearchFilters = {
-      page: 2,
-      sort: "newest",
+      page: 1,
+      sort: '',
       begin_date: '',
       end_date: '',
       facet: '',
@@ -36,7 +36,7 @@ export class SearchComponent implements OnInit {
       fq: '',
       q: ''
     };
-    this.searchArticles(filters); // temp;
+    this.searchArticles(filters);
   }
 
   private searchArticles(filters: SearchFilters) {
@@ -70,4 +70,22 @@ export class SearchComponent implements OnInit {
     return event;
   }
 
+  onSearchSubmit($event: SearchFilters) {
+    this.articlesService.searchArticles($event)
+      .subscribe({
+        next: (result) => {
+          this.length = result.response.docs.length;
+          this.articles = result.response.docs;
+          this.getServerData({
+            length: this.length,
+            pageIndex: 0,
+            pageSize: 6,
+            previousPageIndex: this.previousPageIndex
+          });
+        },
+        error: (e) => {
+          console.log(e.error['message']);
+        }
+      });
+  }
 }
