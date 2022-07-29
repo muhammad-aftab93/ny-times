@@ -38,7 +38,7 @@ export class ArticlesService {
     if (filters.fq)
       query += `fq=${filters.fq}&`;
 
-    if (filters.page)
+    if (filters.page && filters.page != 0)
       query += `page=${filters.page}&`;
 
     if (filters.q)
