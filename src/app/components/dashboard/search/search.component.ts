@@ -39,7 +39,7 @@ export class SearchComponent implements OnInit {
     this.searchArticles(filters);
   }
 
-  private searchArticles(filters: SearchFilters) {
+  public searchArticles(filters: SearchFilters) {
     this.articlesService.searchArticles(filters)
       .subscribe({
         next: (result) => {
