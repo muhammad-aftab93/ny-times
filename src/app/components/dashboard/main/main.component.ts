@@ -26,7 +26,7 @@ export class MainComponent implements OnInit {
     this.getTopStories('home');
   }
 
-  private getTopStories(category: string) {
+  public getTopStories(category: string) {
     this.newsService.getNewsByCategory(category)
       .subscribe({
         next: (result) => {

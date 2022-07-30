@@ -29,6 +29,7 @@ export class RegisterComponent implements OnInit {
 
   onRegister(registerForm: FormGroup) {
     if (registerForm.invalid) {
+      this.errorMessage = "All fields are required.";
       return;
     }
 
